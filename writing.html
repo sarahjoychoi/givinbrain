@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GIVIN' BRAIN</title>
+    <style>
+      * {
+        overflow-x: hidden;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-auto-rows: auto;
+        grid-gap: 10px;
+        padding: 10px;
+      }
+
+      .box {
+        overflow: hidden;
+        position: relative;
+      }
+
+      .box img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .box-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: 1;
+        width: 100%;
+      }
+
+      .box-text a {
+        display: block;
+        color: black;
+        font-family: Helvetica;
+        font-size: 12pt;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="box">
+        <img src="img/sticky1.jpg" alt="Image 1">
+        <div class="box-text"><a href="#">Link 1</a></div>
+      </div>
+      <div class="box">
+        <img src="img/sticky1.jpg" alt="Image 2">
+        <div class="box-text"><a href="#">Link 2</a></div>
+      </div>
+      <div class="box">
+        <img src="img/sticky2.jpg" alt="Image 3">
+        <div class="box-text"><a href="#">Link 3</a></div>
+      </div>
+      <div class="box">
+        <img src="img/sticky2.jpg" alt="Image 4">
+        <div class="box-text"><a href="#">Link 4</a></div>
+      </div>
+      <div class="box">
+        <img src="img/sticky1.jpg" alt="Image 5">
+        <div class="box-text"><a href="#">Link 5</a></div>
+      </div>
+      
+    </div>
+
+    <script>
+      window.onload = function() {
+        // Get all image elements
+        const images = document.querySelectorAll('.box img');
+
+        // Set the height of each box element to the height of its image
+        images.forEach((img) => {
+          const box = img.parentNode;
+          const width = img.offsetWidth;
+          const height = img.offsetHeight;
+          const aspectRatio = height / width;
+          box.style.gridRowEnd = `span ${Math.ceil(aspectRatio)}`;
+        });
+      }
+    </script>
+  </body>
+</html>

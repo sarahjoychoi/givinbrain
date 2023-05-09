@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GIVIN' BRAIN</title>
+    <style>
+      *{
+        overflow-x: hidden;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-auto-rows: auto;
+        grid-gap: 10px;
+        padding: 10px;
+      }
+
+      .box {
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .box img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="box"><img src="books/1.jpeg" alt="Image 1"></div>
+      <div class="box"><img src="books/2.jpeg" alt="Image 2"></div>
+      <div class="box"><img src="books/3.jpeg" alt="Image 3"></div>
+      <div class="box"><img src="books/4.jpeg" alt="Image 4"></div>
+      <div class="box"><img src="books/5.jpeg" alt="Image 5"></div>
+      <div class="box"><img src="books/6.jpeg" alt="Image 6"></div>
+      <div class="box"><img src="books/7.jpeg" alt="Image 7"></div>
+      <div class="box"><img src="books/8.jpeg" alt="Image 8"></div>
+      <div class="box"><img src="books/9.jpeg" alt="Image 9"></div>
+      <div class="box"><img src="books/10.jpeg" alt="Image 10"></div>
+      <div class="box"><img src="books/11.jpeg" alt="Image 11"></div>
+      <div class="box"><img src="books/12.jpeg" alt="Image 12"></div>
+      <div class="box"><img src="books/13.jpeg" alt="Image 13"></div>
+      <div class="box"><img src="books/14.jpeg" alt="Image 14"></div>
+      <div class="box"><img src="books/15.jpeg" alt="Image 15"></div>
+      <div class="box"><img src="books/16.jpeg" alt="Image 16"></div>
+      <div class="box"><img src="books/17.jpeg" alt="Image 17"></div>
+      <div class="box"><img src="books/18.jpeg" alt="Image 18"></div>
+      <div class="box"><img src="books/19.jpeg" alt="Image 19"></div>
+      <div class="box"><img src="books/20.jpeg" alt="Image 20"></div>
+      <div class="box"><img src="books/21.jpeg" alt="Image 21"></div>
+      <div class="box"><img src="books/22.jpeg" alt="Image 22"></div>
+      <div class="box"><img src="books/23.jpeg" alt="Image 23"></div>
+      <div class="box"><img src="books/24.jpeg" alt="Image 24"></div>
+      <div class="box"><img src="books/25.jpeg" alt="Image 25"></div>
+      <div class="box"><img src="books/26.jpeg" alt="Image 26"></div>
+      <div class="box"><img src="books/27.jpeg" alt="Image 27"></div>
+      <div class="box"><img src="books/28.jpeg" alt="Image 28"></div>
+      <div class="box"><img src="books/29.jpeg" alt="Image 29"></div>
+      <div class="box"><img src="books/30.jpeg" alt="Image 30"></div>
+      <div class="box"><img src="books/31.jpeg" alt="Image 31"></div>
+      <div class="box"><img src="books/32.jpeg" alt="Image 32"></div>
+      <div class="box"><img src="books/33.jpeg" alt="Image 33"></div>
+      <div class="box"><img src="books/34.jpeg" alt="Image 34"></div>
+      <div class="box"><img src="books/35.jpeg" alt="Image 35"></div>
+      <div class="box"><img src="books/36.jpeg" alt="Image 36"></div>
+      <div class="box"><img src="books/37.jpeg" alt="Image 37"></div>
+      <div class="box"><img src="books/38.jpeg" alt="Image 38"></div>
+    </div>
+
+    <script>
+      // Get all image elements
+      const images = document.querySelectorAll('.box img');
+
+      // Set the height of each box element to the height of its image
+      images.forEach((img) => {
+        img.addEventListener('load', () => {
+          const box = img.parentNode;
+          const width = img.offsetWidth;
+          const height = img.offsetHeight;
+          const aspectRatio = height / width;
+          box.style.gridRowEnd = `span ${Math.ceil(aspectRatio)}`;
+        });
+      });
+    </script>
+  </body>
+</html>

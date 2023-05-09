@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GIVIN' BRAIN</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      
+
+      .brain-container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 60vh;
+        width: auto;
+      }
+
+      .brain-image {
+        display: block;
+        width: auto;
+        height: 100%;
+      }
+
+      .brain-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .brain-overlay a{
+        font-family: Helvetica;
+        font-size: 20pt;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .brain-area {
+        position: absolute;
+        display: block;
+        width: 50%;
+        height: 50%;
+      }
+
+      .area-1 {
+        top: 0;
+        left: 0;
+        background-image: url(img/brain1.png);
+      }
+
+      .area-2 {
+        top: 0;
+        right: 0;
+        background-image: url(img/brain2.png);
+        background-position: top right;
+      }
+
+      .area-3 {
+        bottom: 0;
+        left: 0;
+        background-image: url(img/brain3.png);
+        background-position: bottom left;
+      }
+
+      .area-4 {
+        bottom: 0;
+        right: 0;
+        background-image: url(img/brain4.png);
+        background-position: bottom right;
+      }
+
+      /*
+      .area-5 {
+        top: 0;
+        left: 25%;
+        width: 50%;
+        height: 50%;
+      }
+
+      .area-6 {
+        bottom: 0;
+        left: 25%;
+        width: 50%;
+        height: 50%;
+      }
+      */
+
+      .area-1,
+      .area-2,
+      .area-3,
+      .area-4 {
+        opacity: 0;
+        background-repeat: no-repeat;
+		background-size: 200% 200%;
+      }
+
+      .area-1:hover,
+      .area-2:hover,
+      .area-3:hover,
+      .area-4:hover {
+        opacity: 1;
+        /* border: solid pink;*/
+      }
+
+      #ig:hover {
+        color: pink;
+      }
+
+      iframe {
+        height: 100vh;
+        width: 100vw;
+        border: none;
+      }
+
+      @media only screen and (max-width: 600px) {
+		  .brain-container {
+		    height: 40vh;
+		  }
+		}
+
+    </style>
+  </head>
+  <body>
+    <div class="brain-container">
+      <img src="img/brain.png" alt="Brain" class="brain-image">
+     <div class="brain-overlay">
+      <a href="#" class="brain-area area-1" data-url="books.html"></a>
+      <a href="#" class="brain-area area-2" data-url="toys.html"></a>
+      <a href="#" class="brain-area area-3" data-url="about.html"></a>
+      <a href="#" class="brain-area area-4" data-url="writing.html"></a>
+    </div>
+    </div>
+    <div class="container" id="content-container">
+      <iframe src="toys.html" id="content-iframe"></iframe>
+    </div>
+  <script>
+  const brainContainer = document.querySelector('.brain-container');
+  const brainAreas = document.querySelectorAll('.brain-area');
+
+  function scaleDownBrain() {
+    const containerRect = brainContainer.getBoundingClientRect();
+    const xTranslate = window.innerWidth - containerRect.right - 55;
+    const yTranslate = window.innerHeight - containerRect.bottom - 45;
+    const scaleFactor = 0.15;
+    brainContainer.style.transform = `translate(${xTranslate}px, ${yTranslate}px) scale(${scaleFactor})`;
+    brainContainer.style.transition = 'transform 2s';
+    brainContainer.style.transitionDelay = '1s';
+
+    if (scaleFactor === 0.15) {
+      brainAreas.forEach(area => {
+        area.style.opacity = 0;
+        area.removeEventListener('click', scaleDownBrain);
+      });
+    } else {
+      brainAreas.forEach(area => {
+        area.style.opacity = 1;
+      });
+    }
+  }
+
+  function scaleUpBrain() {
+    brainContainer.style.transform = 'translate(-50%, -50%)';
+    brainContainer.style.top = '50%';
+    brainContainer.style.left = '50%';
+    brainContainer.style.transition = 'transform 2s, top 2s, left 2s';
+    brainAreas.forEach(area => {
+      area.style.opacity = 0;
+    });
+  }
+
+  function changeBrainImage(event) {
+	  if (!brainContainer.style.transform.includes('scale(0.15)')) {
+	    const hoveredArea = event.target;
+	    const imgUrl = window.getComputedStyle(hoveredArea).getPropertyValue("background-image");
+	    const imgSrc = imgUrl.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+	    const brainImage = document.querySelector('.brain-image');
+	    brainImage.src = imgSrc;
+	}
+  }
+
+  brainAreas.forEach(area => {
+	  area.addEventListener('mouseover', changeBrainImage);
+	});
+
+	function changeIframeUrl(url) {
+	    const iframe = document.getElementById('content-iframe');
+	    if (!brainContainer.style.transform.includes('scale(0.15)')) {
+	      iframe.src = url;
+	    }
+  }
+
+  brainAreas.forEach(area => {
+    area.addEventListener('click', event => {
+      const url = area.getAttribute('data-url');
+      changeIframeUrl(url);
+      if (brainContainer.style.transform.includes('scale(0.15)')) {
+        scaleUpBrain();
+      } else {
+        scaleDownBrain();
+      }
+    });
+  });
+
+  </script>
+
+
+  </body>
+</html>
