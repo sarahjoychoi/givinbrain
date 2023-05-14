@@ -5,6 +5,7 @@
     <style>
       * {
         overflow-x: hidden;
+        overflow-y: hidden;
       }
 
       .container {
@@ -48,35 +49,47 @@
 
   <body>
     <div class="container">
+
+    <!--copy and paste this to make a new sticky note:
+
       <div class="box">
-        <img src="img/sticky1.jpg" alt="Image 1">
-        <div class="box-text"><a href="https://gatamagazine.com/articles/art/shibari-an-interview-with-marie-sauvage">Shibari, An interview with Marie Sauvage</a></div>
+        <img src="img/imagename" alt="put description of image here">
+        <div class="box-text"><a href="writing/put link here.pdf">put name of article here</a></div>
       </div>
+
+    -->
+
       <div class="box">
-        <img src="img/sticky1.jpg" alt="Image 2">
-        <div class="box-text"><a href="#">Star Pussy</a></div>
+        <img src="img/sticky1.jpg" alt="yellow stickynote">
+        <div class="box-text"><a href="https://gatamagazine.com/articles/art/shibari-an-interview-with-marie-sauvage">Shibari,<br>A Marie Sauvage<br>Interview</a></div>
       </div>
+
       <div class="box">
-        <img src="img/sticky2.jpg" alt="Image 3">
-        <div class="box-text"><a href="#">Link 3</a></div>
+        <img src="img/sticky1.jpg" alt="yellow stickynote">
+        <div class="box-text"><a href="writing/Swag_on_Steroids.pdf">Swag on Steroids</a></div>
       </div>
+
       <div class="box">
-        <img src="img/sticky2.jpg" alt="Image 4">
-        <div class="box-text"><a href="#">Link 4</a></div>
+        <img src="img/sticky2.jpg" alt="heart stickynote">
+        <div class="box-text"><a href="writing/Star_Pussy.pdf">Star Pussy</a></div>
       </div>
+
       <div class="box">
-        <img src="img/sticky1.jpg" alt="Image 5">
-        <div class="box-text"><a href="#">Link 5</a></div>
+        <img src="img/sticky2.jpg" alt="heart stickynote">
+        <div class="box-text"><a href="writing/double_h.pdf">double h</a></div>
       </div>
       
+      <div class="box">
+        <img src="img/sticky1.jpg" alt="yellow stickynote">
+        <div class="box-text"><a href="writing/Pornstar_Bar.pdf">Pornstar Bar</a></div>
+      </div>
+
     </div>
 
     <script>
       window.onload = function() {
-        // Get all image elements
         const images = document.querySelectorAll('.box img');
 
-        // Set the height of each box element to the height of its image
         images.forEach((img) => {
           const box = img.parentNode;
           const width = img.offsetWidth;
