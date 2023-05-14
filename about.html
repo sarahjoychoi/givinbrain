@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>About</title>
+    <title>ABOUT</title>
     <style>
       * {
         padding: 20px;
@@ -62,6 +62,23 @@
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 20px;
       }
+
+      @media only screen and (max-width: 1200px) {
+        .grid-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media only screen and (max-width: 800px) {
+        .grid-container {
+          grid-template-columns: repeat(1, 1fr);
+        }
+
+        #card1:hover, #card2:hover, #card3:hover, #card4:hover, #card5:hover, #card6:hover {
+          transform: none;
+        }
+      }
+
 
 </style>
   </head>
