@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GIVIN' BRAIN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      *{
+        overflow-x: hidden;
+      }
+      
+      .container {
+        display: grid;
+        /* the first number after repeat controls the number of columns, leave the 1fr */
+        grid-template-columns: repeat(8, 1fr);
+        grid-auto-rows: auto;
+        grid-gap: 10px;
+        padding: 10px;
+      }
+
+      .box {
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .box img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      @media only screen and (max-width: 800px) {
+        .container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+	      
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+
+     <!-- each paragraph is one image
+     		href="put shopify product link here"
+     		src="foldername/imagename"
+     		alt="put name of product for your reference (it won't appear anywhere) " 
+     		delete the <a> tag for picture of packaging -->
+
+      <div class="box"><img src="main/1.png"></div>
+    <a href="https://givinbrain.myshopify.com/products/hello-kitty-gundam" target="_top">
+      <div class="box"><img src="toys/2.png" alt="hello kitty gundam"></div>
+    </a>
+    <a href="https://givinbrain.myshopify.com/products/ultraman-stuffed-animal-glow-in-dark" target="_top">
+      <div class="box"><img src="toys/3.png"></div>
+    </a>
+      <div class="box"><img src="main/4.png"></div>
+      <div class="box"><img src="main/5.png"></div>
+      <div class="box"><img src="main/6.png"></div>
+      <div class="box"><img src="main/7.png"></div>
+      <div class="box"><img src="main/8.png"></div>
+    <a href="https://givinbrain.myshopify.com/products/weird-baby" target="_top">
+      <div class="box"><img src="main/9.png"></div>
+    </a>
+      <div class="box"><img src="main/10.png"></div>
+      <div class="box"><img src="main/11.png"></div>
+      <div class="box"><img src="main/12.png"></div>
+      <div class="box"><img src="main/13.png"></div>
+      <div class="box"><img src="main/14.png"></div>
+      <div class="box"><img src="main/15.png"></div>
+      <div class="box"><img src="main/16.png"></div>
+      <div class="box"><img src="main/17.png"></div>
+      <div class="box"><img src="main/18.png"></div>
+      <div class="box"><img src="main/19.png"></div>
+      <div class="box"><img src="main/20.png"></div>
+      <div class="box"><img src="main/21.png"></div>
+      <div class="box"><img src="main/22.png"></div>
+      <div class="box"><img src="main/23.png"></div>
+      <div class="box"><img src="main/24.png"></div>
+      <div class="box"><img src="main/25.png"></div>
+      <div class="box"><img src="main/26.png"></div>
+      <div class="box"><img src="main/27.png"></div>
+      <div class="box"><img src="main/28.png"></div>
+      <div class="box"><img src="main/29.png"></div>
+      <div class="box"><img src="main/30.png"></div>
+    <a href="https://givinbrain.myshopify.com/products/hello-kitty-gundam" target="_top">
+      <div class="box"><img src="main/31.png"></div>
+    </a>
+      <div class="box"><img src="main/32.png"></div>
+      <div class="box"><img src="main/34.png"></div>
+      <div class="box"><img src="main/34.png"></div>
+      <div class="box"><img src="main/35.png"></div>
+      <div class="box"><img src="main/36.png"></div>
+      <div class="box"><img src="main/37.png"></div>
+      <div class="box"><img src="main/38.png"></div>
+      <div class="box"><img src="main/39.png"></div>
+
+
+    </div>
+
+    <script>
+      window.onload = function() {
+
+        const images = document.querySelectorAll('.box img');
+
+        images.forEach((img) => {
+          const box = img.parentNode;
+          const width = img.offsetWidth;
+          const height = img.offsetHeight;
+          const aspectRatio = height / width;
+          box.style.gridRowEnd = `span ${Math.ceil(aspectRatio)}`;
+        });
+      }
+    </script>
+  </body>
+</html>
